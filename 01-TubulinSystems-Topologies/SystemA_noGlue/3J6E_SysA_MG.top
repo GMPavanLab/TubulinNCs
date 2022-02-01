@@ -1,0 +1,58 @@
+;
+;	File '3J6E_SysA_MG.top' was generated
+;	By user: eric (1000)
+;	On host: PC-1689SC3178
+;	At date: Thu Oct 21 11:20:04 2021
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	                :-) GROMACS - gmx pdb2gmx, 2020.5-MODIFIED (-:
+;	
+;	Executable:   /opt/gromacs/2020.5_OpenMP_CUDA_Plumed271/bin/gmx
+;	Data prefix:  /opt/gromacs/2020.5_OpenMP_CUDA_Plumed271
+;	Working dir:  /home/eric/01-work/01-ColleTubulin/00-model/05-Topologies/01-3J6E-SystemA
+;	Command line:
+;	  gmx pdb2gmx -f MG.pdb -o 3J6E_SysA_MG.gro -p 3J6E_SysA_MG.top -i 3J6E_SysA_MG.itp -ignh -heavyh -water tip3p
+;	Force field was read from the standard GROMACS share directory.
+;
+
+#define HEAVY_H
+
+; Include forcefield parameters
+#include "amber99sb-ildn.ff/forcefield.itp"
+
+[ moleculetype ]
+; Name            nrexcl
+Ion_chain_A         3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+; residue 500 MG  rtp MG   q +2.0
+     1         MG    500     MG     MG      1          2     24.305   ; qtot 2
+
+; Include Position restraint file
+#ifdef POSRES
+#include "3J6E_SysA_MG.itp"
+#endif
+
+; Include water topology
+#include "amber99sb-ildn.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+; Name
+Protein
+
+[ molecules ]
+; Compound        #mols
+Ion_chain_A         1
