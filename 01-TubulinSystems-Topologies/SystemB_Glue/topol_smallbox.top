@@ -1,0 +1,61 @@
+;
+;	File '3J6B_SysA_Protein.top' was generated
+;	By user: eric (1000)
+;	On host: PC-1689SC3178
+;	At date: Thu Oct 21 10:43:26 2021
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	     Eric A. Zizzi
+;	
+;	Force Field Information:
+;       Protein chains: AMBER 99SB-ILDN
+;       GTP, G2P, Glue: GAFF with AM1-BCC partial charges
+;
+
+#define HEAVY_H
+
+; Include forcefield parameters
+#include "amber99sb-ildn.ff/forcefield.itp"
+
+; Include missing atomtypes:
+#include "missingatomtypes.atp"
+
+; Include chain topologies
+#include "3J6E_SysB_Protein_Protein_chain_A.itp"
+#include "3J6E_SysB_Protein_Protein_chain_B.itp"
+#include "3J6E_SysB_Protein_Protein_chain_I.itp"
+#include "3J6E_SysB_Protein_Protein_chain_J.itp"
+#include "G2P.itp"
+#include "GTP.itp"
+#include "3J6E_SysB_MG.itp"
+#include "GLE.itp"
+
+; Include water topology
+#include "amber99sb-ildn.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+; Name
+Longitudinal Tubulin Assembly with GTP/G2P and Glue in water
+
+[ molecules ]
+; Compound        #mols
+Protein_chain_A     1
+Protein_chain_B     1
+Protein_chain_I     1
+Protein_chain_J     1
+G2P                 2
+GTP                 2
+MG                  4
+GLE                60
