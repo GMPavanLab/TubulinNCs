@@ -1,0 +1,30 @@
+# This file was created Fri Oct 22 14:54:56 2021
+# Created by:
+#                 :-) GROMACS - gmx mindist, 2020.5-MODIFIED (-:
+# 
+# Executable:   /opt/gromacs/2020.5_OpenMP_CUDA_Plumed271/bin/gmx
+# Data prefix:  /opt/gromacs/2020.5_OpenMP_CUDA_Plumed271
+# Working dir:  /home/eric/01-work/01-ColleTubulin/05-EM/SystemA_Glue
+# Command line:
+#   gmx mindist -s ions.tpr -f water.gro -od mindist.xvg -pi
+# gmx mindist is part of G R O M A C S:
+#
+# Gnomes, ROck Monsters And Chili Sauce
+#
+@    title "Minimum distance to periodic image"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Distance (nm)"
+@TYPE xy
+@ subtitle "and maximum internal distance"
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "min per."
+@ s1 legend "max int."
+@ s2 legend "box1"
+@ s3 legend "box2"
+@ s4 legend "box3"
+	0	 3.448 18.048 18.877 10.430 13.790
