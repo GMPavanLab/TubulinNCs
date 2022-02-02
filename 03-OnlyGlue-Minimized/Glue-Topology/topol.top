@@ -1,0 +1,25 @@
+
+; Include forcefield parameters
+
+#include "amber99sb-ildn.ff/forcefield.itp"
+
+#include "GLE.atp"
+
+#include "GLE.itp"
+
+; Include water topology
+#include "amber99sb-ildn.ff/tip3p.itp"
+
+; Include topology for ions
+#include "amber99sb-ildn.ff/ions.itp"
+
+[ system ]
+; Name
+COO- Glue in water
+
+[ molecules ]
+; Compound        #mols
+GLE                 1
+SOL         6945
+NA               20
+CL               22
